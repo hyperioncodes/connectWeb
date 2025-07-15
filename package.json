@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cropperjs": "^2.0.0",
+    "firebase": "^11.10.0"
+  }
+}

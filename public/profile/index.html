@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+<style>
+   img {
+      max-width: 100%;
+    }
+
+    .cropper-view-box {
+	border-radius: 50%;
+}
+.cropper-face {
+	background-color:inherit !important;
+}
+
+    /* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
+    .cropper-view-box {
+        outline: 0;
+        box-shadow: 0 0 0 1px #39f;
+    }
+    button {
+  background-color: rgb(255,0,102);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  
+}
+#choose {
+  background-color:#3a86ff;
+  padding:10px;
+  border-radius:30px;;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color:white;
+  margin: 0 auto;
+  display:block;
+  justify-content:center;
+  text-align:center;
+  width:20%;
+  
+  top:47%;
+  right:40%;
+  position:absolute;
+}
+img#image {
+  width: 100vw;     /* Full viewport width */
+  height: 100vh;    /* Full viewport height */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+#image-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+</style>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Choose profile picture</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.css" integrity="sha512-087vysR/jM0N5cp13Vlp+ZF9wx6tKbvJLwPO8Iit6J7R+n7uIMMjg37dEgexOshDmDITHYY5useeSmfD1MYiQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+</head>
+<body>
+  <div class="container">
+    <div>
+      <label for="pp" id="choose">
+        Choose file
+      </label>
+        <input type="file" accept="image/heic,image/png,image/jpeg,image/heif"id="pp" required style="display:none">
+       
+      <img id="image" >
+      
+    </div>
+    
+    <p>
+      
+    </p>
+    
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="cpp.js"></script>
+</body>
+</html>
