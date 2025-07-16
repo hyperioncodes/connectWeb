@@ -1,4 +1,4 @@
-### ConnectWeb
+# ConnectWeb
 ## What is this?
 This is the code for the website of Connect.
 ## What is Connect?
