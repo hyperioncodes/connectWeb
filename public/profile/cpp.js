@@ -23,16 +23,20 @@ function getRoundedCanvas(sourceCanvas) {
     const dd = $("#pp").prop("files")[0]//image selected
     const url = URL.createObjectURL(dd)
     const img = new Image()
-    img.onLoad=()=>{
+    img.src = url
+    console.log(url)
+    img.onload=()=>{
       const width = img.width
       const height = img.height
+      
       if(window.ReactNativeWebView){
         window.ReactNativeWebView.postMessage(JSON.stringify({type:"dimentions",width:width,height:height}))
       }else{
+        
         window.parent.postMessage({type:"dimentions",width:width,height:height},"*")
       }
     }
-    img.src = url
+    
     const reader = new FileReader()
     reader.readAsDataURL(dd) //get as base 64
     reader.onload = function(){
@@ -52,9 +56,10 @@ function getRoundedCanvas(sourceCanvas) {
     });
     window.addEventListener('message',(event)=>{
       const data = JSON.parse(event.data)
-      if(data.requesting="imageToBase64"){
+      if(data.requesting==="imageToBase64"){
       if(window.ReactNativeWebView){
         window.ReactNativeWebView.postMessage(convertToBase64())
+        
       
     }else{
       window.parent.postMessage(convertToBase64(),"*")
