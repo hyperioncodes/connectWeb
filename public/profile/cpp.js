@@ -2,6 +2,7 @@ let params = new URLSearchParams(document.location.search);
 let uid = params.get("uid");
 
 function getRoundedCanvas(sourceCanvas) {
+  //function to get rounded canvas using ✨math✨ 
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
     var width = sourceCanvas.width;
@@ -19,9 +20,21 @@ function getRoundedCanvas(sourceCanvas) {
   }
 
   $("#pp").change(function(){
-    const dd = $("#pp").prop("files")[0]
+    const dd = $("#pp").prop("files")[0]//image selected
+    const url = URL.createObjectURL(dd)
+    const img = new Image()
+    img.onLoad=()=>{
+      const width = img.width
+      const height = img.height
+      if(window.ReactNativeWebView){
+        window.ReactNativeWebView.postMessage(JSON.stringify({type:"dimentions",width:width,height:height}))
+      }else{
+        window.parent.postMessage({type:"dimentions",width:width,height:height},"*")
+      }
+    }
+    img.src = url
     const reader = new FileReader()
-    reader.readAsDataURL(dd)
+    reader.readAsDataURL(dd) //get as base 64
     reader.onload = function(){
         const datad = reader.result;
     var image = document.getElementById('image');
@@ -39,14 +52,14 @@ function getRoundedCanvas(sourceCanvas) {
     });
     window.addEventListener('message',(event)=>{
       const data = JSON.parse(event.data)
+      if(data.requesting="imageToBase64"){
       if(window.ReactNativeWebView){
-        if(data.platform=="native"){
         window.ReactNativeWebView.postMessage(convertToBase64())
-        }else{
-          window.parent.postMessage(convertToBase64(),"*")
-        }
-      }
-    })
+      
+    }else{
+      window.parent.postMessage(convertToBase64(),"*")
+    }
+  }})
     function convertToBase64() {
       if($("#pp").prop("files")[0]){
       var croppedCanvas;
